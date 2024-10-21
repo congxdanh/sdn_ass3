@@ -1,11 +1,10 @@
 // Using Node.js `require()`
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 const connectDB = async () => {
   await mongoose
-    .connect(
-      "mongodb+srv://danhmuto:hayquenlamon1@cluster0.8futn.mongodb.net/student_api"
-    )
+    .connect(process.env.URL_MONGO)
     .then(() => console.log("Connected!"));
 };
 
