@@ -29,12 +29,16 @@ exports.createStudent = async (req, res) => {
 
 exports.getAllStudents = async (req, res) => {
   try {
-    const students = await Student.find();
+    const students = await Student.find({});
+    const formattedStudents = students.map((student) => ({
+      _id: student._id,
+      name: student.fullName, // Đổi 'fullName' thành 'name'
+      studentCode: student.studentCode,
+      isActive: student.isActive,
+    }));
     res.status(200).json({
       success: true,
-      data: {
-        students,
-      },
+      data: formattedStudents, // Đảm bảo data là mảng như hình mẫu
     });
   } catch {
     res.status(500).json({

@@ -1,19 +1,26 @@
 const mongoose = require("mongoose");
 
-const studentModel = new mongoose.Schema({
-  fullName: {
-    type: String,
-    required: [true, "student content can not be empty!"],
-  },
-  studentCode: {
-    type: String,
-    required: [true, "student's option can not be empty!"],
-  },
+const studentModel = new mongoose.Schema(
+  {
+    fullName: {
+      type: String,
+      required: [true, "student content can not be empty!"],
+    },
+    studentCode: {
+      type: String,
+      required: [true, "student's option can not be empty!"],
+    },
 
-  isActive: {
-    type: Boolean,
+    isActive: {
+      type: Boolean,
+    },
   },
-});
+  {
+    toJSON: {
+      versionKey: false,
+    },
+  }
+);
 
 const student = mongoose.model("student", studentModel);
 
