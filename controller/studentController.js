@@ -54,7 +54,10 @@ exports.getStudentById = async (req, res) => {
     res.status(200).json({
       success: true,
       data: {
-        student,
+        _id: student._id,
+        name: student.fullName, // Đổi 'fullName' thành 'name'
+        studentCode: student.studentCode,
+        isActive: student.isActive,
       },
     });
   } catch (err) {
